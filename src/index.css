@@ -1,4 +1,5 @@
 body {
+  background-color: azure;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -7,9 +8,35 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.board-row,
+.status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.status {
+  margin-bottom: 7vh;
+  margin-top: 20vh;
+  font-size: 3.5vh;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
 button {
-  width: 25 px;
-  height: 25px;
+  min-width: 4rem;
+  min-height: 4rem;
+  margin: 4px;
+  background-color: bisque;
+  border: none;
+  transition: transform 0.135s;
+  cursor: pointer;
+  font-size: 5vh;
+  font-weight: bold;
+}
+
+button:hover {
+  transform: scale(1.05);
 }
 
 code {
