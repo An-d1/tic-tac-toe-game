@@ -26,12 +26,20 @@ export default function Board() {
     setXIsNext(!xIsNext);
   }
 
+  function resetGame() {
+    setSquares(Array(9).fill(null)); // Clear the board
+    setXIsNext(true); // Set X as the next player
+  }
+
   const winner = calculateWinner(squares);
 
   let status;
-  if(winner) {
+  if (winner == "Draw") {
+    status = "Draw!"
+  }
+  else if(winner) {
     status = "Winner: " + winner;
-  } else {
+  }  else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
@@ -53,6 +61,11 @@ export default function Board() {
       <Square value={squares[7]} onSquareClick={() => handleClick(7)}/>
       <Square value={squares[8]} onSquareClick={() => handleClick(8)}/>
     </div>
+    <div className="resetBtn">
+      <button onClick={resetGame}>
+        Reset
+      </button>
+    </div>
   </>
   );
 }
@@ -63,16 +76,24 @@ function calculateWinner(squares) {
     [3, 4, 5],
     [6, 7, 8],
     [0, 3, 6],
-    [1, 4, 7], 
+    [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
   ];
+
+  // Check for a winner
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return squares[a]; // Return the winner ('X' or 'O')
+    }
   }
-}
-return null;
+
+  // Check for a draw
+  if (squares.every(square => square !== null)) {
+    return "Draw"; // All squares are filled and no winner, so it's a draw
+  }
+
+  return null; // Game is still ongoing
 }

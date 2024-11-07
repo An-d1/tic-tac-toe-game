@@ -9,7 +9,8 @@ body {
 }
 
 .board-row,
-.status {
+.status,
+.resetBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,12 +24,26 @@ body {
   font-weight: bold;
 }
 
+.resetBtn {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.resetBtn button {
+  background-color: bisque;
+  color: black;
+  border-radius: 13px;
+  font-weight: bold;
+}
+
 button {
   min-width: 4rem;
   min-height: 4rem;
   margin: 4px;
   background-color: bisque;
-  border: none;
+  border: 1px solid gray;
   transition: transform 0.135s;
   cursor: pointer;
   font-size: 5vh;
