@@ -1,4 +1,7 @@
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ScoreBoard } from "./ScoreBoard";
+
 
 function Square({ value, onSquareClick }) {
   return (
@@ -9,8 +12,10 @@ function Square({ value, onSquareClick }) {
 }
 
 export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true)
+  const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
+  let [xScore, setXScore] = useState(0);
+  let [oScore, setOScore] = useState(0);
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -34,14 +39,38 @@ export default function Board() {
   const winner = calculateWinner(squares);
 
   let status;
+
+  // eslint-disable-next-line default-case
+  switch (winner) {
+    case "Draw":
+      status = "Draw!";
+      break;
+    case "X":
+      status = "Winner X";
+      xScore++;
+      break;
+    case "O":
+      status = "Winner O";
+      oScore++;
+      break;
+    case null:
+      status = "Next player: " + (xIsNext ? "X" : "O");
+  }
+
+  /*
   if (winner == "Draw") {
     status = "Draw!"
-  }
-  else if(winner) {
+  } else if(winner === "X") {
     status = "Winner: " + winner;
-  }  else {
+    setXScore += 1;
+  } else if(winner === "O") {
+    status = "Winner: " + winner;
+    setOScore += 1;
+  }
+   else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
+    */
 
   return (
     <>
@@ -66,6 +95,7 @@ export default function Board() {
         Reset
       </button>
     </div>
+    <ScoreBoard xScore={xScore} oScore={oScore} />
   </>
   );
 }
