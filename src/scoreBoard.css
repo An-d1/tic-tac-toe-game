@@ -3,11 +3,44 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5vh;
+  margin-top: 2vh;
   color: black;
   font-family: Silkscreen;
 }
 
 .scoreBanner {
   font-size: 6vh
+}
+
+.score {
+  font-size: 3vh;
+}
+
+.round-winner-container {
+  display: inline-block;
+  position: absolute;
+  right: 10%;
+  top: 35%;
+}
+
+.round-winner-container h2 {
+  color: white;
+  font-family: Silkscreen;
+  font-size: 4vh;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 950px) { 
+  .round-winner-container {
+    display: block;
+    position: absolute;
+    top: 92%;
+  }
+  
+  .round-winner-container h2 {
+    color: white;
+    font-family: Silkscreen;
+    font-size: 4vh;
+    transform: rotate(0deg);
+  }
 }

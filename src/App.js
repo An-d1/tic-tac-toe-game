@@ -1,6 +1,8 @@
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { ScoreBoard } from "./ScoreBoard";
+import { LastRound } from "./RoundWinner";
+
 
 
 function Square({ value, onSquareClick }) {
@@ -16,6 +18,7 @@ export default function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   let [xScore, setXScore] = useState(0);
   let [oScore, setOScore] = useState(0);
+  let [roundReport, setRoundReport] = useState("")
 
   function handleClick(i) {
     if (squares[i] || calculateWinner(squares)) {
@@ -40,15 +43,18 @@ export default function Board() {
 
   let status;
 
-  function startNewGame() {
+  function startNewGame(roundReport) {
     setSquares(Array(9).fill(null)); // Clear the board
 
     if (xScore > oScore) {
-      console.log('Worked')
+      alert("X won the game!")
+      // setRoundReport("X won the game!!!");
     } else if (oScore > xScore) {
-      console.log('Wrokeddd')
+      // setRoundReport("O won the game!!!");
+      alert("O won the game!")
     } else {
-      status = "It's a tie!";
+      alert("Wow, It's a tie!!!")
+      // setRoundReport("It's a tie!!!");
     }
     
     setXScore(0);
@@ -119,6 +125,8 @@ export default function Board() {
       </button>
     </div>
     <ScoreBoard xScore={xScore} oScore={oScore} />
+    <LastRound roundReport={roundReport} /> 
+    {/* This was removed because the round report was displayed on the screen through the prop but i made it an alert */}
   </>
   );
 }
