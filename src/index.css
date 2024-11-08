@@ -17,8 +17,8 @@ body {
 }
 
 .status {
-  margin-bottom: 7vh;
-  margin-top: 13vh;
+  margin-bottom: 5vh;
+  margin-top: 2vh;
   font-size: 5.5vh;
   font-family: Silkscreen;
   font-weight: 500;
@@ -32,17 +32,37 @@ body {
   font-size: 2rem;
 }
 
+.startGameBtn {
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
 .resetBtn button {
   background-color: bisque;
   color: black;
   border-radius: 13px;
   font-weight: bold;
   font-family: Silkscreen ;
+  min-width: 2.5rem;
+  min-height: 3rem;
+}
+
+.startGameBtn button {
+  background-color: bisque;
+  color: black;
+  border-radius: 13px;
+  font-weight: bold;
+  font-family: Silkscreen ;
+  min-width: 2.5rem;
+  min-height: 4rem;
 }
 
 button {
-  min-width: 4rem;
-  min-height: 4rem;
+  min-width: 5rem;
+  min-height: 5rem;
   background-color: rgb(65, 56, 44);
   border: 1px solid rgb(255, 255, 255);
   transition: transform 0.135s;
@@ -61,6 +81,12 @@ code {
     monospace;
 }
 
+.square.winningLine {
+  background-color: #ffcc00;
+  color: #fff;
+}
+
+
 @media (max-width: 950px) {
   .board-row,
   .status,
@@ -70,10 +96,10 @@ code {
     align-items: center;
     font-size: 1rem;
   }
-  
+
   .status {
     margin-bottom: 3.5vh;
-    margin-top: 12vh;
+    margin-top: 5vh;
     font-size: 3.5vh;
     font-family: Silkscreen;
     font-weight: bold;

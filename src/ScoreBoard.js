@@ -1,6 +1,10 @@
 
 export function ScoreBoard({xScore, oScore}) {
-  const displayX = xScore;
+  let newXScore = 0;
+  newXScore += xScore;
+  let newOScore = 0;
+  newOScore += oScore;
+
   return (
     <>
       <div className="scoreFlexContainer">
@@ -8,10 +12,10 @@ export function ScoreBoard({xScore, oScore}) {
           Score!
         </div>
         <div className="score">
-          X-Score: {xScore}
+          X-Score: {newXScore}
         </div>
         <div className="score">
-          O-Score: {oScore}
+          O-Score: {newOScore}
         </div>
       </div>
     </>

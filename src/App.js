@@ -33,12 +33,30 @@ export default function Board() {
 
   function resetGame() {
     setSquares(Array(9).fill(null)); // Clear the board
+    setXScore(xScore);
+    setOScore(oScore);
     setXIsNext(true); // Set X as the next player
   }
 
-  const winner = calculateWinner(squares);
-
   let status;
+
+  function startNewGame() {
+    setSquares(Array(9).fill(null)); // Clear the board
+
+    if (xScore > oScore) {
+      console.log('Worked')
+    } else if (oScore > xScore) {
+      console.log('Wrokeddd')
+    } else {
+      status = "It's a tie!";
+    }
+    
+    setXScore(0);
+    setOScore(0);
+    setXIsNext(true);
+  }
+
+  const winner = calculateWinner(squares);
 
   // eslint-disable-next-line default-case
   switch (winner) {
@@ -92,7 +110,12 @@ export default function Board() {
     </div>
     <div className="resetBtn">
       <button onClick={resetGame}>
-        Reset
+        Play Again
+      </button>
+    </div>
+    <div className="startGameBtn">
+      <button onClick={startNewGame}>
+        Reset Score!
       </button>
     </div>
     <ScoreBoard xScore={xScore} oScore={oScore} />
